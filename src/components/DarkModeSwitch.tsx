@@ -1,14 +1,17 @@
-import { HStack, Image } from "@chakra-ui/react";
-import logo from "../assets/Homepage.jpg";
-import DarkModeSwitch from "./DarkModeSwitch";
+import { HStack, Switch, Text, useColorMode } from "@chakra-ui/react";
 
-const NavBar = () => {
+const DarkModeSwitch = () => {
+  const { toggleColorMode, colorMode } = useColorMode();
+
   return (
-    <HStack justifyContent="space-between" padding={0.8}>
-      <Image src={logo} boxSize={35} />
-      <DarkModeSwitch></DarkModeSwitch>
+    <HStack>
+      <Switch
+        isChecked={colorMode === "dark"}
+        onChange={toggleColorMode}
+      />
+      <Text>Dark Mode</Text>
     </HStack>
   );
 };
 
-export default NavBar;
+export default DarkModeSwitch;
