@@ -18,20 +18,21 @@ const GameGrid = () => {
 
   useEffect(() => {
     apiClient
-      .get<FetchedGameDetails>("/games")     // response has to be in the format of FetchedGameDetails
-      .then((res) => setGames(res.data.results))        //
+      .get<FetchedGameDetails>("/games") // response has to be in the format of FetchedGameDetails
+      .then((res) => setGames(res.data.results)) //
       .catch((err) => setError(err.message));
   });
   return (
-//fragment to wrap multiple elements
-    <>  
-        {error && <Text>{error}</Text>}
-        <ul>
-            {games.map(game => <li key={game.id}>game.name</li>)}
-        </ul>
+    //fragment to wrap multiple elements
+    <>
+      {error && <Text>{error}</Text>}
+      <ul>
+        {games.map((game) => (
+          <li key={game.id}>{game.name}</li>
+        ))}
+      </ul>
     </>
-  )
-  
+  );
 };
 
 export default GameGrid;
